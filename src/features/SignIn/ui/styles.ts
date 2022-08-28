@@ -37,3 +37,32 @@ export const Box = styled.div`
     height: 1.563rem;
   }
 `
+
+export const GooglButton = styled.div`
+  width: 100%;
+  max-width: 31.25rem;
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  button {
+    width: 100%;
+
+    div {
+      border-right: 1px solid #c8c8c8;
+      padding: 0 0.5rem;
+    }
+    span {
+      text-align: center;
+      flex: 1;
+    }
+  }
+`
+
+export const Wrapper = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  align-items: center;
+`
