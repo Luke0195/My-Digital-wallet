@@ -5,8 +5,10 @@ export const SingInContainer = styled.div`
   height: 100vh;
   background: #1b1f38;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  text-align: center;
 `
 
 export const AuthenticationArea = styled.div`

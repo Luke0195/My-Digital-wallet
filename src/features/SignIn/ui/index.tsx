@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { GoogleLogin, GoogleLoginResponse, GoogleLoginResponseOffline } from 'react-google-login'
 import { AuthenticationPayload } from '../protocols'
@@ -8,17 +9,20 @@ import * as S from './styles'
 import { loadAuthentication, clientId } from '../services/authentication'
 
 const Ui = () => {
+  const navigate = useNavigate()
+  const experiesTime = new Date()
+  experiesTime.setTime(experiesTime.getTime() + experiesTime.getMinutes() * 60 * 1000)
   const [user, setUser] = useState<AuthenticationPayload>({} as AuthenticationPayload)
 
   useEffect(() => {
     loadAuthentication()
   }, [])
 
-  const onSuccess = (res: GoogleLoginResponse | GoogleLoginResponseOffline) => {
+  const onSuccess = async (res: GoogleLoginResponse | GoogleLoginResponseOffline) => {
     //@ts-ignore
     const { accessToken, profileObj } = res as GoogleLoginResponse | GoogleLoginResponseOffline
 
-    setUser({
+    await setUser({
       accessToken,
       profileObj: {
         email: profileObj.email,
@@ -26,7 +30,9 @@ const Ui = () => {
         name: profileObj.name,
       },
     })
-    toast.success(`Bem vindo ${user.profileObj.name}`)
+    toast.success(`Bem vindo ${user.profileObj ? user.profileObj.name : ''}!`)
+    await localStorage.setItem('USER_TOKEN', accessToken)
+    navigate('/dashboard')
   }
 
   const onFailure = (err: any) => {
