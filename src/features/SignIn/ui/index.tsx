@@ -32,7 +32,7 @@ const Ui = () => {
     })
     toast.success(`Bem vindo ${user.profileObj ? user.profileObj.name : ''}!`)
     await localStorage.setItem('USER_TOKEN', accessToken)
-    navigate('/dashboard')
+    navigate('/home')
   }
 
   const onFailure = (err: any) => {
