@@ -13,11 +13,12 @@ export const Container = styled.header`
 
 export const Content = styled.div`
   width: 100%;
-  padding: 0rem 2rem;
+  padding-right: 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
   justify-content: space-between;
+  position: relative;
 
   div {
     display: flex;

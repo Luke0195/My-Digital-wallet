@@ -10,7 +10,7 @@ const Header = () => {
   return (
     <S.Container>
       <S.Content>
-        <Fi.FiMenu size={20} />
+        <Fi.FiMenu size={20} color="#fff" />
         <div>
           {user.photoUrl ? (
             <S.Profile>

@@ -1,7 +1,11 @@
 import React from 'react'
-
+import * as S from './styles'
 const SideBar = () => {
-  return <h1> SideBar</h1>
+  return (
+    <S.Container>
+      <h1> SideBar </h1>
+    </S.Container>
+  )
 }
 
 export default SideBar

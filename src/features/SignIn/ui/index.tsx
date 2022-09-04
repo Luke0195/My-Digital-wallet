@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { Cookies } from 'react-cookie'
 import GoogleButton from 'react-google-button'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
-
+import { useSpring, animated } from 'react-spring'
 import { AuthenticationPayload } from '../protocols'
 
 import logo from '../../../assets/img/logo.svg'
@@ -12,7 +12,6 @@ import { signIn as request } from '../services/authentication'
 
 function Ui() {
   const navigate = useNavigate()
-  const cookies = new Cookies()
   const [storagedUser, setStoragedUser] = useState<AuthenticationPayload>({} as AuthenticationPayload)
 
   const handleSignIn = async () => {

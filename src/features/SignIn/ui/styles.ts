@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 
 export const SingInContainer = styled.div`
   width: 100%;
@@ -9,6 +9,68 @@ export const SingInContainer = styled.div`
   align-items: center;
   justify-content: center;
   text-align: center;
+`
+
+const ShowLeftContent = keyframes`
+0%{
+    transform: translateY(-100px) ;
+    opacity: 0;
+}
+
+25%{
+    opacity: 0;
+
+
+}
+
+50%{
+    opacity: 0;
+}
+
+75%{
+transform: translateY(-100px) ;
+opacity: 0;
+transition: all 2s ease-out;
+}
+
+100%{
+transform: translateY(0) ;
+opacity: 1;
+transition: all 2s ease-out;
+}
+`
+
+const ShowUpAnimation = keyframes`
+ 0%{
+    opacity: 0;
+    transform: translateX(-100px) ;
+    display:none;
+ }
+
+ 25%{
+    opacity: 0;
+    display:none;
+    transform: translateX(-100px) ;
+
+ }
+
+ 50%{
+    opacity: 0;
+    display:none;
+    transform: translateX(-100px) ;
+}
+
+ 75%{
+    transform: translateX(-100px) ;
+    opacity: 0.2;
+    transition: all 2s ease-out;
+ }
+
+ 100%{
+    transform: translateX(0) ;
+    opacity: 1;
+    transition: all 2s ease-out;
+ }
 `
 
 export const AuthenticationArea = styled.div`
@@ -24,6 +86,7 @@ export const AuthenticationArea = styled.div`
     font-family: 'Lato';
     color: #f2f2f2;
   }
+  animation: ${ShowLeftContent} 4s ease-out;
 `
 
 export const Box = styled.div`
@@ -65,6 +128,7 @@ export const GooglButton = styled.div`
       flex: 1;
     }
   }
+  animation: ${ShowUpAnimation} 4s ease-out;
 `
 
 export const Wrapper = styled.div`
