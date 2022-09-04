@@ -1,18 +1,33 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Dashboard from '../../../pages/Dashboard'
 import Header from '../components/Header'
 import SideBar from '../components/SideBar'
 import * as S from './styles'
+import DashboardContext from '../context/index'
 
 const Main = () => {
+  const [storagedUser, setStoragedUser] = useState(() => {
+    const user = localStorage.getItem('user')
+    if (user) {
+      return JSON.parse(user)
+    }
+    return {}
+  })
+
   return (
-    <S.Container>
-      <Header />
-      <SideBar />
-      <S.Content>
-        <Dashboard />
-      </S.Content>
-    </S.Container>
+    <DashboardContext.Provider
+      value={{
+        user: storagedUser,
+      }}
+    >
+      <S.Container>
+        <Header />
+        <SideBar />
+        <S.Content>
+          <Dashboard />
+        </S.Content>
+      </S.Container>
+    </DashboardContext.Provider>
   )
 }
 
