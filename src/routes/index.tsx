@@ -10,7 +10,7 @@ const Routes = () => {
     <Switch>
       <Route path="/" element={<SignIn />} />
       <Route
-        path="home"
+        path="/home"
         element={
           <PrivateRoute>
             <Layout />
