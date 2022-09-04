@@ -5,12 +5,12 @@ import { useDashboardContext } from '../../context/index'
 import * as S from './styles'
 
 const Header = () => {
-  const { user } = useDashboardContext()
+  const { user, setOpenSideBar, openSideBar } = useDashboardContext()
   const defaultImage = 'https://iela.ufsc.br/sites/default/files/default_images/default-user.png'
   return (
     <S.Container>
       <S.Content>
-        <Fi.FiMenu size={20} color="#fff" />
+        <Fi.FiMenu size={20} color="#fff" onClick={() => setOpenSideBar(true)} />
         <div>
           {user.photoUrl ? (
             <S.Profile>

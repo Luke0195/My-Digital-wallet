@@ -13,11 +13,14 @@ const Main = () => {
     }
     return {}
   })
+  const [openSideBar, setOpenSideBar] = useState<boolean>(false)
 
   return (
     <DashboardContext.Provider
       value={{
         user: storagedUser,
+        openSideBar,
+        setOpenSideBar,
       }}
     >
       <S.Container>
