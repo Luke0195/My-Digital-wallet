@@ -1,17 +1,12 @@
-import { gapi } from 'gapi-script'
-import { GoogleLoginResponse, GoogleLoginResponseOffline } from 'react-google-login'
-export const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID
+import { GoogleAuthProvider, signInWithPopup, signOut } from 'firebase/auth'
 
-export const loadAuthentication = () => {
-  const initClient = () => {
-    gapi.auth2.init({
-      clientId,
-      scope: '',
-    })
-  }
-  gapi.load('client:auth2', initClient)
+import { auth } from '../../../services/fireabase'
+
+export const logOut = async (): Promise<any> => {
+  return signOut(auth)
 }
 
-export const onSuccess = (res: GoogleLoginResponse | GoogleLoginResponseOffline) => {
-  console.log('success', res)
+export const signIn = async (): Promise<any> => {
+  const googleAuthProvider = new GoogleAuthProvider()
+  return signInWithPopup(auth, googleAuthProvider)
 }

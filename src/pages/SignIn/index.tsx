@@ -1,7 +1,7 @@
 import React from 'react'
-import Ui from '../../features/SignIn/ui'
+import Ui from '../../features/SignIn/ui/index'
 
-const SignIn = () => {
+function SignIn() {
   return <Ui />
 }
 

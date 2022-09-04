@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+
 import { Navigate } from 'react-router-dom'
 
 interface PrivateRouteProps {
@@ -6,10 +7,10 @@ interface PrivateRouteProps {
 }
 
 const PrivateRoute = ({ children }: PrivateRouteProps) => {
-  const token = localStorage.getItem('USER_TOKEN')
+  const userData = localStorage.getItem('user')
   //@ts-ignore
-
-  return token ? children : <Navigate to="/" />
+  const user = JSON.parse(userData)
+  return user.accessToken ? children : <Navigate to="/" replace />
 }
 
 export default PrivateRoute
